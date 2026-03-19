@@ -2,8 +2,10 @@ package com.example.guessnumberservice.controller;
 
 import com.example.guessnumberservice.request.LoginRequest;
 import com.example.guessnumberservice.request.RegisterRequest;
+import com.example.guessnumberservice.response.ApiResponse;
 import com.example.guessnumberservice.response.AuthResponse;
 import com.example.guessnumberservice.service.AuthService;
+import com.example.guessnumberservice.util.ConstUtils;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +24,13 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
+    public ApiResponse<Void> register(@Valid @RequestBody RegisterRequest request) {
         authService.register(request);
-        return ResponseEntity.ok("Registered successfully");
+        return ApiResponse.success(null, ConstUtils.REGISTER_SUCCESSFULLY);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request));
+    public ApiResponse<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        return ApiResponse.success(authService.login(request));
     }
 }

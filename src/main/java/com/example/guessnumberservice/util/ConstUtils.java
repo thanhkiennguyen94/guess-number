@@ -1,8 +1,8 @@
 package com.example.guessnumberservice.util;
 
-public class ConstantUtils {
+public class ConstUtils {
 
-    private ConstantUtils() {
+    private ConstUtils() {
         throw new UnsupportedOperationException("Utility class");
     }
     public static final String BEARER = "Bearer ";
@@ -21,7 +21,8 @@ public class ConstantUtils {
     public static final String URL_NOT_FOUND_ERROR_MSG = "Not Found";
 
     public static final String CUSTOM_EXCEPTION = "Custom exception: {}";
-    public static final String CREATE_SUCCESSFULLY = "Create successfully";
+    public static final String SERVER_BUSY = "System busy, please try again";
+    public static final String REGISTER_SUCCESSFULLY = "Register successfully";
     public static final String UPDATE_SUCCESSFULLY = "Update successfully";
     public static final String DELETE_SUCCESSFULLY = "Delete successfully";
 }

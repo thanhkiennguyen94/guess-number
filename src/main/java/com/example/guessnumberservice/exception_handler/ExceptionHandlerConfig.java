@@ -4,7 +4,7 @@ import com.example.guessnumberservice.exception_handler.exception.*;
 import com.example.guessnumberservice.response.ApiError;
 import com.example.guessnumberservice.response.ApiResponse;
 import com.example.guessnumberservice.response.ApiSubError;
-import com.example.guessnumberservice.util.ConstantUtils;
+import com.example.guessnumberservice.util.ConstUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -40,10 +40,10 @@ public class ExceptionHandlerConfig {
         int status = HttpStatus.INTERNAL_SERVER_ERROR.value();
         ApiError error = new ApiError(
                 status,
-                ConstantUtils.SYSTEM_ERROR_MSG,
+                ConstUtils.SYSTEM_ERROR_MSG,
                 request.getRequestURI()
         );
-        return new ResponseEntity<>(ApiResponse.error(status, error, ConstantUtils.SYSTEM_ERROR_MSG), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ApiResponse.error(status, error, ConstUtils.SYSTEM_ERROR_MSG), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(Exception.class)
@@ -55,10 +55,10 @@ public class ExceptionHandlerConfig {
         int status = HttpStatus.INTERNAL_SERVER_ERROR.value();
         ApiError error = new ApiError(
                 status,
-                ConstantUtils.SYSTEM_ERROR_MSG,
+                ConstUtils.SYSTEM_ERROR_MSG,
                 request.getRequestURI()
         );
-        return new ResponseEntity<>(ApiResponse.error(status, error, ConstantUtils.SYSTEM_ERROR_MSG), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(ApiResponse.error(status, error, ConstUtils.SYSTEM_ERROR_MSG), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -96,12 +96,12 @@ public class ExceptionHandlerConfig {
         int status = HttpStatus.BAD_REQUEST.value();
         ApiError response = new ApiError(
                 status,
-                ConstantUtils.VALIDATE_ERROR_MSG,
+                ConstUtils.VALIDATE_ERROR_MSG,
                 request.getRequestURI(),
                 errors
         );
 
-        return new ResponseEntity<>(ApiResponse.error(status, response, ConstantUtils.VALIDATE_ERROR_MSG), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ApiResponse.error(status, response, ConstUtils.VALIDATE_ERROR_MSG), HttpStatus.BAD_REQUEST);
     }
 
     private boolean isHigherPriority(String[] newCodes, String[] existingCodes) {
@@ -139,11 +139,11 @@ public class ExceptionHandlerConfig {
         int status = HttpStatus.BAD_REQUEST.value();
         ApiError res = new ApiError(
                 status,
-                ConstantUtils.VALIDATE_ERROR_MSG,
+                ConstUtils.VALIDATE_ERROR_MSG,
                 request.getRequestURI(),
                 errors
         );
-        return new ResponseEntity<>(ApiResponse.error(status, res, ConstantUtils.VALIDATE_ERROR_MSG), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ApiResponse.error(status, res, ConstUtils.VALIDATE_ERROR_MSG), HttpStatus.BAD_REQUEST);
     }
 
 //    @ExceptionHandler(InvalidOldPasswordException.class)
@@ -207,10 +207,10 @@ public class ExceptionHandlerConfig {
         int status = HttpStatus.BAD_REQUEST.value();
         ApiError error = new ApiError(
                 status,
-                ConstantUtils.BODY_ERROR_MSG,
+                ConstUtils.BODY_ERROR_MSG,
                 request.getRequestURI()
         );
-        return new ResponseEntity<>(ApiResponse.error(status,error,ConstantUtils.BODY_ERROR_MSG), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(ApiResponse.error(status,error, ConstUtils.BODY_ERROR_MSG), HttpStatus.BAD_REQUEST);
     }
 
     //   xử lý url không tồn tại thì báo 404 thay vì 401
@@ -219,10 +219,10 @@ public class ExceptionHandlerConfig {
         int status = HttpStatus.NOT_FOUND.value();
         ApiError error = new ApiError(
                 status,
-                ConstantUtils.URL_NOT_FOUND_ERROR_MSG,
+                ConstUtils.URL_NOT_FOUND_ERROR_MSG,
                 request.getRequestURI()
         );
-        return new ResponseEntity<>(ApiResponse.error(status,error, ConstantUtils.URL_NOT_FOUND_ERROR_MSG), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(ApiResponse.error(status,error, ConstUtils.URL_NOT_FOUND_ERROR_MSG), HttpStatus.NOT_FOUND);
     }
 
     //    handle exception sai ten dang nhap hoac mat khau

@@ -1,4 +1,5 @@
 package com.example.guessnumberservice.model;
+
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,12 +11,12 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "users")
+@Table(name = "payments")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class User implements Serializable {
+public class Payment implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -23,13 +24,9 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     Long id;
-
-    private String username;
-    private String password;
-
-    private int score;
-    private int turns;
-
-    @Version
-    private Long version;
+    Long userId;
+    Integer amount;
+    //    Gia lap mac dinh chi co 2 trang thai
+    String status; // PENDING, SUCCESS
+    String txnRef;
 }
