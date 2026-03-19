@@ -1,6 +1,3 @@
-# guess-number
-# guess-number
-README.md mẫu ngắn gọn
 # Guess Number Game - Backend
 
 ## 1. Mục đích
